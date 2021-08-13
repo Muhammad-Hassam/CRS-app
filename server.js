@@ -9,7 +9,7 @@ const ApplyJobs = require("./dbmodels/jobapply");
 const path = require("path");
 dotenv.config({ path: "./config.env" });
 const SECRET_KEY = process.env.SECRET_KEY;
-app.use(
+router.use(
   "/",
   express.static(path.resolve(path.join(__dirname, "./CRS-frontend/build")))
 );
