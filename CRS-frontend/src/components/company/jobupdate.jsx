@@ -1,21 +1,21 @@
-import React from 'react';
-import Header from '../header/header';
-import Footer from '../footer/footer';
-import Grid from '@material-ui/core/Grid';
-import Card from '@material-ui/core/Card';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
-import { useFormik } from 'formik';
-import Swal from 'sweetalert2';
-import axios from 'axios';
-import { useHistory } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
-
+import React from "react";
+import Header from "../header/header";
+import Footer from "../footer/footer";
+import Grid from "@material-ui/core/Grid";
+import Card from "@material-ui/core/Card";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
+import Radio from "@material-ui/core/Radio";
+import RadioGroup from "@material-ui/core/RadioGroup";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import FormControl from "@material-ui/core/FormControl";
+import FormLabel from "@material-ui/core/FormLabel";
+import { useFormik } from "formik";
+import Swal from "sweetalert2";
+import axios from "axios";
+import { useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import url from "../../baseurl/baseURL";
 const Jobupdate = (props) => {
   const data = props.location.state;
   const history = useHistory();
@@ -45,8 +45,8 @@ const Jobupdate = (props) => {
         skills,
       } = values;
       axios({
-        method: 'post',
-        url: 'http://localhost:4000/jobupdate',
+        method: "post",
+        url: url + "/jobupdate",
         withCredentials: true,
         data: {
           _id: data._id,
@@ -62,16 +62,16 @@ const Jobupdate = (props) => {
       })
         .then((res) => {
           if (!res.status === 200) {
-            console.log('data is not comming');
+            console.log("data is not comming");
           } else {
             Swal.fire({
-              position: 'top-end',
-              icon: 'success',
-              title: 'Job Updated',
+              position: "top-end",
+              icon: "success",
+              title: "Job Updated",
               showConfirmButton: false,
               timer: 2000,
             });
-            history.push('/companydashboard');
+            history.push("/companydashboard");
           }
         })
         .catch((err) => {
@@ -83,85 +83,85 @@ const Jobupdate = (props) => {
   return (
     <>
       <Header />
-      <Grid container style={{ marginTop: '25px', alignItems: 'center' }}>
+      <Grid container style={{ marginTop: "25px", alignItems: "center" }}>
         <Grid xs={3} md={3} sm={3}></Grid>
         <Grid xs={12} md={6} sm={6} item>
           <Card>
-            <Grid item xs={12} md={12} sm={12} style={{ textAlign: 'center' }}>
+            <Grid item xs={12} md={12} sm={12} style={{ textAlign: "center" }}>
               <h1>Create Job Form</h1>
             </Grid>
             <form onSubmit={formik.handleSubmit}>
-              <Grid xs={12} md={12} sm={12} style={{ marginRight: '15px' }}>
+              <Grid xs={12} md={12} sm={12} style={{ marginRight: "15px" }}>
                 <TextField
-                  label='Company Name'
-                  style={{ margin: 8, marginBottom: '20px' }}
-                  placeholder='Enter Company Name'
-                  helperText=''
+                  label="Company Name"
+                  style={{ margin: 8, marginBottom: "20px" }}
+                  placeholder="Enter Company Name"
+                  helperText=""
                   fullWidth
-                  margin='normal'
+                  margin="normal"
                   value={formik.values.uname}
-                  onChange={formik.handleChange('uname')}
+                  onChange={formik.handleChange("uname")}
                   InputLabelProps={{
                     shrink: true,
                   }}
-                  variant='filled'
+                  variant="filled"
                 />
                 <TextField
-                  label='Email'
-                  style={{ margin: 8, marginBottom: '20px' }}
-                  placeholder='Enter Email'
-                  helperText=''
+                  label="Email"
+                  style={{ margin: 8, marginBottom: "20px" }}
+                  placeholder="Enter Email"
+                  helperText=""
                   fullWidth
-                  margin='normal'
+                  margin="normal"
                   value={formik.values.email}
-                  onChange={formik.handleChange('email')}
+                  onChange={formik.handleChange("email")}
                   InputLabelProps={{
                     shrink: true,
                   }}
-                  variant='filled'
+                  variant="filled"
                 />
                 <Grid item xs={12} md={12} sm={12}>
                   <TextField
-                    label='Description'
+                    label="Description"
                     style={{ margin: 8 }}
-                    placeholder='Enter Job Description'
-                    helperText=''
+                    placeholder="Enter Job Description"
+                    helperText=""
                     multiline
                     rowsMax={4}
                     fullWidth
-                    type='number'
-                    margin='normal'
+                    type="number"
+                    margin="normal"
                     value={formik.values.description}
-                    onChange={formik.handleChange('description')}
+                    onChange={formik.handleChange("description")}
                     InputLabelProps={{
                       shrink: true,
                     }}
-                    variant='filled'
+                    variant="filled"
                   />
                   <Grid
                     item
                     xs={12}
                     md={12}
                     sm={12}
-                    style={{ marginLeft: '10px', marginTop: '10px' }}
+                    style={{ marginLeft: "10px", marginTop: "10px" }}
                   >
-                    <FormControl component='fieldset'>
-                      <FormLabel component='legend'>Job Type</FormLabel>
+                    <FormControl component="fieldset">
+                      <FormLabel component="legend">Job Type</FormLabel>
                       <RadioGroup
-                        aria-label='Job type'
-                        name='job1'
+                        aria-label="Job type"
+                        name="job1"
                         value={formik.values.jobtype}
-                        onChange={formik.handleChange('jobtype')}
+                        onChange={formik.handleChange("jobtype")}
                       >
                         <FormControlLabel
-                          value='Part-Time'
+                          value="Part-Time"
                           control={<Radio />}
-                          label='Part-Time'
+                          label="Part-Time"
                         />
                         <FormControlLabel
-                          value='Full-Time'
+                          value="Full-Time"
                           control={<Radio />}
-                          label='Full-Time'
+                          label="Full-Time"
                         />
                       </RadioGroup>
                     </FormControl>
@@ -169,87 +169,87 @@ const Jobupdate = (props) => {
                 </Grid>
                 <Grid item xs={12} md={12} sm={12}>
                   <TextField
-                    label='Skills'
+                    label="Skills"
                     style={{ margin: 8 }}
-                    placeholder='Enter required skills'
-                    helperText=''
+                    placeholder="Enter required skills"
+                    helperText=""
                     fullWidth
                     multiline
                     rowsMax={2}
-                    type='text'
-                    margin='normal'
+                    type="text"
+                    margin="normal"
                     value={formik.values.skills}
-                    onChange={formik.handleChange('skills')}
+                    onChange={formik.handleChange("skills")}
                     InputLabelProps={{
                       shrink: true,
                     }}
-                    variant='filled'
+                    variant="filled"
                   />
                 </Grid>
                 <Grid item xs={12} md={12} sm={12}>
                   <TextField
-                    label='Experience'
+                    label="Experience"
                     style={{ margin: 8 }}
-                    placeholder='Enter required experience'
-                    helperText=''
+                    placeholder="Enter required experience"
+                    helperText=""
                     fullWidth
                     multiline
                     rowsMax={2}
-                    type='text'
-                    margin='normal'
+                    type="text"
+                    margin="normal"
                     value={formik.values.experience}
-                    onChange={formik.handleChange('experience')}
+                    onChange={formik.handleChange("experience")}
                     InputLabelProps={{
                       shrink: true,
                     }}
-                    variant='filled'
+                    variant="filled"
                   />
                 </Grid>
                 <Grid item xs={12} md={12} sm={12}>
                   <TextField
-                    label='Website'
+                    label="Website"
                     style={{ margin: 8 }}
-                    placeholder='Enter company Website'
-                    helperText=''
+                    placeholder="Enter company Website"
+                    helperText=""
                     fullWidth
-                    type='text'
-                    margin='normal'
+                    type="text"
+                    margin="normal"
                     value={formik.values.website}
-                    onChange={formik.handleChange('website')}
+                    onChange={formik.handleChange("website")}
                     InputLabelProps={{
                       shrink: true,
                     }}
-                    variant='filled'
+                    variant="filled"
                   />
                 </Grid>
                 <Grid item xs={12} md={12} sm={12}>
                   <TextField
-                    label='Contact No'
+                    label="Contact No"
                     style={{ margin: 8 }}
-                    placeholder='Enter company contact No'
-                    helperText=''
+                    placeholder="Enter company contact No"
+                    helperText=""
                     fullWidth
-                    type='number'
-                    margin='normal'
+                    type="number"
+                    margin="normal"
                     value={formik.values.contact}
-                    onChange={formik.handleChange('contact')}
+                    onChange={formik.handleChange("contact")}
                     InputLabelProps={{
                       shrink: true,
                     }}
-                    variant='filled'
+                    variant="filled"
                   />
                 </Grid>
               </Grid>
               <Grid xs={12} md={12} sm={12} item>
                 <Button
-                  variant='contained'
-                  color='default'
+                  variant="contained"
+                  color="default"
                   style={{
-                    marginTop: '10px',
-                    marginBottom: '15px',
-                    marginLeft: '10px',
+                    marginTop: "10px",
+                    marginBottom: "15px",
+                    marginLeft: "10px",
                   }}
-                  type='submit'
+                  type="submit"
                 >
                   Update
                 </Button>

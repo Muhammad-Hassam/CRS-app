@@ -1,21 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import Header from '../header/header';
-import Footer from '../footer/footer';
-import Grid from '@material-ui/core/Grid';
-import Card from '@material-ui/core/Card';
-import Button from '@material-ui/core/Button';
-import Avatar from '@material-ui/core/Avatar';
-import User from '../../assets/images/user.png';
-import Swal from 'sweetalert2';
-import axios from 'axios';
-
+import React, { useState, useEffect } from "react";
+import Header from "../header/header";
+import Footer from "../footer/footer";
+import Grid from "@material-ui/core/Grid";
+import Card from "@material-ui/core/Card";
+import Button from "@material-ui/core/Button";
+import Avatar from "@material-ui/core/Avatar";
+import User from "../../assets/images/user.png";
+import Swal from "sweetalert2";
+import axios from "axios";
+import url from "../../baseurl/baseURL";
 const AdminStudent = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
     axios({
-      method: 'get',
-      url: 'http://localhost:4000/user',
+      method: "get",
+      url: url + "/user",
       withCredentials: true,
     })
       .then((res) => {
@@ -31,8 +31,8 @@ const AdminStudent = () => {
 
   const deletejob = (id) => {
     axios({
-      method: 'post',
-      url: 'http://localhost:4000/userremove',
+      method: "post",
+      url: url + "/userremove",
       withCredentials: true,
       data: {
         id: id,
@@ -40,12 +40,12 @@ const AdminStudent = () => {
     })
       .then((res) => {
         if (!res.status === 200) {
-          console.log('data is not comming');
+          console.log("data is not comming");
         } else {
           Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: 'Job Deleted',
+            position: "top-end",
+            icon: "success",
+            title: "Job Deleted",
             showConfirmButton: false,
             timer: 2000,
           });
@@ -57,10 +57,10 @@ const AdminStudent = () => {
   };
 
   const update = (val) => {
-    if (val.allow === 'true') {
+    if (val.allow === "true") {
       axios({
-        method: 'post',
-        url: 'http://localhost:4000/userupdate',
+        method: "post",
+        url: url + "/userupdate",
         withCredentials: true,
         data: {
           id: val.id,
@@ -69,12 +69,12 @@ const AdminStudent = () => {
       })
         .then((res) => {
           if (!res.status === 200) {
-            console.log('data is not comming');
+            console.log("data is not comming");
           } else {
             Swal.fire({
-              position: 'top-end',
-              icon: 'success',
-              title: 'Profile Updated',
+              position: "top-end",
+              icon: "success",
+              title: "Profile Updated",
               showConfirmButton: false,
               timer: 2000,
             });
@@ -85,8 +85,8 @@ const AdminStudent = () => {
         });
     } else {
       axios({
-        method: 'post',
-        url: 'http://localhost:4000/userupdate',
+        method: "post",
+        url: url + "/userupdate",
         withCredentials: true,
         data: {
           id: val.id,
@@ -95,12 +95,12 @@ const AdminStudent = () => {
       })
         .then((res) => {
           if (!res.status === 200) {
-            console.log('data is not comming');
+            console.log("data is not comming");
           } else {
             Swal.fire({
-              position: 'top-end',
-              icon: 'success',
-              title: 'Profile Updated',
+              position: "top-end",
+              icon: "success",
+              title: "Profile Updated",
               showConfirmButton: false,
               timer: 2000,
             });
@@ -111,20 +111,20 @@ const AdminStudent = () => {
         });
     }
   };
-  const student = data.filter((post) => post.role === 'student');
+  const student = data.filter((post) => post.role === "student");
 
   return (
     <>
       <Header />
-      <Grid container style={{ marginTop: '25px' }}>
-        <Grid item xs={12} md={12} sm={12} style={{ textAlign: 'center' }}>
+      <Grid container style={{ marginTop: "25px" }}>
+        <Grid item xs={12} md={12} sm={12} style={{ textAlign: "center" }}>
           <h1>Student Profile</h1>
         </Grid>
         <Grid xs={3} md={3} sm={3}></Grid>
         <Grid xs={12} md={6} sm={6} item>
           {student.map((value, index) => {
             return (
-              <Card style={{ marginTop: '20px' }} key={index}>
+              <Card style={{ marginTop: "20px" }} key={index}>
                 <Grid container>
                   <Grid xs={4} md={4} sm={4} item></Grid>
                   <Grid
@@ -132,29 +132,29 @@ const AdminStudent = () => {
                     md={4}
                     sm={4}
                     item
-                    style={{ textAlign: 'center', marginTop: '10px' }}
+                    style={{ textAlign: "center", marginTop: "10px" }}
                   >
                     <Avatar
-                      alt='User Image'
+                      alt="User Image"
                       src={value.imageURL ? value.imageURL : User}
                       style={{
-                        width: '160px',
-                        height: '160px',
-                        alignItems: 'center',
+                        width: "160px",
+                        height: "160px",
+                        alignItems: "center",
                       }}
                     />
                   </Grid>
                   <Grid xs={4} md={4} sm={4} item></Grid>
                 </Grid>
                 <Grid xs={12} md={12} sm={12} item>
-                  <h4 style={{ textAlign: 'center' }}>{value.uname}</h4>
+                  <h4 style={{ textAlign: "center" }}>{value.uname}</h4>
                 </Grid>
                 <Grid
                   xs={12}
                   md={12}
                   sm={12}
                   item
-                  style={{ marginLeft: '20px' }}
+                  style={{ marginLeft: "20px" }}
                 >
                   <p>
                     <span>
@@ -228,16 +228,16 @@ const AdminStudent = () => {
                   md={12}
                   sm={12}
                   item
-                  style={{ textAlign: 'center' }}
+                  style={{ textAlign: "center" }}
                 >
                   <Button
-                    variant='contained'
-                    color='default'
+                    variant="contained"
+                    color="default"
                     style={{
-                      marginTop: '10px',
-                      marginBottom: '15px',
-                      marginLeft: '10px',
-                      padding: '4px 50px',
+                      marginTop: "10px",
+                      marginBottom: "15px",
+                      marginLeft: "10px",
+                      padding: "4px 50px",
                     }}
                     onClick={() =>
                       update({ id: value._id, allow: value.allow })
@@ -246,13 +246,13 @@ const AdminStudent = () => {
                     Allow
                   </Button>
                   <Button
-                    variant='contained'
-                    color='default'
+                    variant="contained"
+                    color="default"
                     style={{
-                      marginTop: '10px',
-                      marginBottom: '15px',
-                      marginLeft: '10px',
-                      padding: '4px 50px',
+                      marginTop: "10px",
+                      marginBottom: "15px",
+                      marginLeft: "10px",
+                      padding: "4px 50px",
                     }}
                     onClick={() => deletejob(value._id)}
                   >

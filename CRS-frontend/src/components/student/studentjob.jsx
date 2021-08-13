@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import Header from '../header/header';
-import Footer from '../footer/footer';
-import Grid from '@material-ui/core/Grid';
-import Card from '@material-ui/core/Card';
-import Button from '@material-ui/core/Button';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
-import userStatus from '../../store/action/index';
-import { useHistory } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useState, useEffect } from "react";
+import Header from "../header/header";
+import Footer from "../footer/footer";
+import Grid from "@material-ui/core/Grid";
+import Card from "@material-ui/core/Card";
+import Button from "@material-ui/core/Button";
+import axios from "axios";
+import { Link } from "react-router-dom";
+import userStatus from "../../store/action/index";
+import { useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import url from "../../baseurl/baseURL";
 
 const Studentjob = () => {
   const userData = useSelector((state) => state.status);
@@ -18,8 +19,8 @@ const Studentjob = () => {
 
   useEffect(() => {
     axios({
-      method: 'get',
-      url: 'http://localhost:4000/jobs',
+      method: "get",
+      url: url + "/jobs",
       withCredentials: true,
     })
       .then((res) => {
@@ -37,24 +38,24 @@ const Studentjob = () => {
     <>
       <Header />
 
-      <Grid container style={{ marginTop: '25px' }}>
+      <Grid container style={{ marginTop: "25px" }}>
         <Grid xs={3} md={3} sm={3}></Grid>
         <Grid xs={12} md={6} sm={12} item>
-          <Grid item xs={12} md={12} sm={12} style={{ textAlign: 'center' }}>
+          <Grid item xs={12} md={12} sm={12} style={{ textAlign: "center" }}>
             <h1>Jobs</h1>
           </Grid>
           {data.map((value, index) => {
             return (
-              <Card key={index} style={{ marginTop: '20px' }}>
+              <Card key={index} style={{ marginTop: "20px" }}>
                 <Grid xs={12} md={12} sm={12} item>
-                  <h4 style={{ textAlign: 'center' }}> {value.uname}</h4>
+                  <h4 style={{ textAlign: "center" }}> {value.uname}</h4>
                 </Grid>
                 <Grid
                   xs={12}
                   md={12}
                   sm={12}
                   item
-                  style={{ marginLeft: '20px' }}
+                  style={{ marginLeft: "20px" }}
                 >
                   <p>
                     <span>
@@ -68,7 +69,7 @@ const Studentjob = () => {
                     </span>
                     <span>{value.jobtype}</span>
                   </p>
-                  <p style={{ marginRight: '5px' }}>
+                  <p style={{ marginRight: "5px" }}>
                     <span>
                       <b>Job Description: </b>
                     </span>
@@ -104,15 +105,15 @@ const Studentjob = () => {
                   md={12}
                   sm={12}
                   item
-                  style={{ textAlign: 'center' }}
+                  style={{ textAlign: "center" }}
                 >
                   <Button
-                    variant='contained'
-                    color='default'
+                    variant="contained"
+                    color="default"
                     style={{
-                      marginTop: '10px',
-                      marginBottom: '15px',
-                      marginLeft: '10px',
+                      marginTop: "10px",
+                      marginBottom: "15px",
+                      marginLeft: "10px",
                     }}
                   >
                     <Link
@@ -120,7 +121,7 @@ const Studentjob = () => {
                         pathname: `/Applyjob/${value._id}`,
                         state: value,
                       }}
-                      style={{ color: '#000', textDecoration: 'none' }}
+                      style={{ color: "#000", textDecoration: "none" }}
                     >
                       Apply
                     </Link>
