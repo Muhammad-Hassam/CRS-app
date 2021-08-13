@@ -6,13 +6,8 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
 const ApplyJobs = require("./dbmodels/jobapply");
-const path = require("path");
 dotenv.config({ path: "./config.env" });
 const SECRET_KEY = process.env.SECRET_KEY;
-router.use(
-  "/",
-  express.static(path.resolve(path.join(__dirname, "./CRS-frontend/build")))
-);
 
 router.post("/signup", (req, res) => {
   const {
