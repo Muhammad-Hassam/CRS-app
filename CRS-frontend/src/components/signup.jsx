@@ -60,7 +60,8 @@ const SignUp = () => {
           },
         })
           .then((res) => {
-            if (res.data.status === 422) {
+            console.log(res.data.error==="Email exist")
+            if (res.data.error==="Email exist") {
               Swal.fire({
                 icon: "error",
                 title: "Oops...",
@@ -68,7 +69,6 @@ const SignUp = () => {
               });
             } else {
               Swal.fire({
-                position: "top-end",
                 icon: "success",
                 title: "Signup SuccessFully",
                 showConfirmButton: false,

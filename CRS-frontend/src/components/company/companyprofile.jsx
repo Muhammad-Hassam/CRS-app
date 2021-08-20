@@ -73,7 +73,7 @@ const Companyprofile = () => {
             </Grid>
             <Grid container>
               <Grid xs={4} md={4} sm={4} item></Grid>
-              <Grid xs={4} md={4} sm={4} item>
+              <Grid xs={4} md={4} sm={4} item style={{textAlign:"center",marginLeft:"30px"}}>
                 <form>
                   <label for="fileToUpload">
                     <div

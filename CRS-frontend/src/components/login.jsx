@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import Header from "../components/header/header";
 import Footer from "../components/footer/footer";
 import Grid from "@material-ui/core/Grid";
@@ -12,10 +12,12 @@ import { useDispatch, useSelector } from "react-redux";
 import userStatus from "../store/action/index";
 import axios from "axios";
 import url from "../baseurl/baseURL";
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const Login = () => {
   const userData = useSelector((state) => state.Status);
   const dispatch = useDispatch();
+  const [isLoading,setIsloading]=useState(false)
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -31,6 +33,7 @@ const Login = () => {
     }),
     onSubmit: (values) => {
       const { email, password } = values;
+      setIsloading(true)
       axios({
         method: "post",
         url: url + "/login",
@@ -42,7 +45,6 @@ const Login = () => {
       })
         .then((res) => {
           if (res.data.status === 200) {
-            console.log("login", res.data);
             dispatch(
               userStatus({
                 loginStatus: true,
@@ -50,11 +52,16 @@ const Login = () => {
                 user: res.data.data,
               })
             );
+            setIsloading(false)
           } else {
+            setIsloading(false)
+            alert("Invalid Credential")
             console.log(res.data.message);
           }
         })
         .catch((err) => {
+          alert("Invalid Credential")
+          setIsloading(false)
           console.log(err);
         });
     },
@@ -130,13 +137,12 @@ const Login = () => {
                       marginLeft: "10px",
                     }}
                     type="submit"
-                  >
-                    Login
+                  >{isLoading?<CircularProgress size={20}/>:"Login"}
                   </Button>
                 </Grid>
-                <Grid xs={6} md={6} sm={6} style={{ marginTop: "15px" }} item>
+                <Grid xs={6} md={6} sm={6} style={{ marginTop: "15px",textAlign:"right",paddingRight:"10px" }} item>
                   <Link
-                    style={{ color: "#000", marginLeft: "10px" }}
+                    style={{ color: "#000" }}
                     to="/Signup"
                   >
                     Not have account!
