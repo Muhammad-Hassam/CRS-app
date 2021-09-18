@@ -43,7 +43,7 @@ const AdminStudent = () => {
           console.log("data is not comming");
         } else {
           Swal.fire({
-            position: "top-end",
+            position: "center",
             icon: "success",
             title: "Job Deleted",
             showConfirmButton: false,
@@ -72,7 +72,7 @@ const AdminStudent = () => {
             console.log("data is not comming");
           } else {
             Swal.fire({
-              position: "top-end",
+              position: "center",
               icon: "success",
               title: "Profile Updated",
               showConfirmButton: false,
@@ -98,7 +98,7 @@ const AdminStudent = () => {
             console.log("data is not comming");
           } else {
             Swal.fire({
-              position: "top-end",
+              position: "center",
               icon: "success",
               title: "Profile Updated",
               showConfirmButton: false,
@@ -116,154 +116,157 @@ const AdminStudent = () => {
   return (
     <>
       <Header />
-      <Grid container style={{ marginTop: "25px" }}>
-        <Grid item xs={12} md={12} sm={12} style={{ textAlign: "center" }}>
-          <h1>Student Profile</h1>
-        </Grid>
-        <Grid xs={3} md={3} sm={3}></Grid>
-        <Grid xs={12} md={6} sm={6} item>
-          {student.map((value, index) => {
-            return (
-              <Card style={{ marginTop: "20px" }} key={index}>
-                <Grid container>
-                  <Grid xs={4} md={4} sm={4} item></Grid>
-                  <Grid
-                    xs={4}
-                    md={4}
-                    sm={4}
-                    item
-                    style={{ textAlign: "center", marginTop: "10px" }}
-                  >
-                    <Avatar
-                      alt="User Image"
-                      src={value.imageURL ? value.imageURL : User}
-                      style={{
-                        width: "160px",
-                        height: "160px",
-                        alignItems: "center",
-                      }}
-                    />
-                  </Grid>
-                  <Grid xs={4} md={4} sm={4} item></Grid>
-                </Grid>
-                <Grid xs={12} md={12} sm={12} item>
-                  <h4 style={{ textAlign: "center" }}>{value.uname}</h4>
-                </Grid>
+      <Grid container style={{ display:"flex",justifyContent:"center",alignItems:"center",height:"calc(100vh - 300px)" }}>
+        {student.length>0?
+      <>
+      <Grid item xs={12} md={12} sm={12} style={{ textAlign: "center" }}>
+        <h1>Student Profile</h1>
+      </Grid>
+      <Grid xs={0} md={3} sm={0}></Grid>
+      <Grid xs={12} md={6} sm={12} item>
+        {student.map((value, index) => {
+          return (
+            <Card style={{ marginTop: "20px" }} key={index}>
+              <Grid container>
                 <Grid
                   xs={12}
                   md={12}
                   sm={12}
                   item
-                  style={{ marginLeft: "20px" }}
+                  style={{ display:"flex",justifyContent:"center"}}
                 >
-                  <p>
-                    <span>
-                      <b>Email: </b>
-                    </span>
-                    <span>{value.email}</span>
-                  </p>
-                  <p>
-                    <span>
-                      <b>Age: </b>
-                    </span>
-                    <span>{value.age}</span>
-                  </p>
-                  <p>
-                    <span>
-                      <b>Gender: </b>
-                    </span>
-                    <span>{value.gender}</span>
-                  </p>
-                  <p>
-                    <span>
-                      <b>Qualification: </b>
-                    </span>
-                    <span>{value.qualification}</span>
-                  </p>
-                  <p>
-                    <span>
-                      <b>Specialization: </b>
-                    </span>
-                    <span>{value.specialization}</span>
-                  </p>
-                  <p>
-                    <span>
-                      <b>CGPA: </b>
-                    </span>
-                    <span>{value.cgpa}</span>
-                  </p>
-                  <p>
-                    <span>
-                      <b>Skills: </b>
-                    </span>
-                    <span>{value.skills}</span>
-                  </p>
-                  <p>
-                    <span>
-                      <b>Inter Grade: </b>
-                    </span>
-                    <span>{value.intergrade}</span>
-                  </p>
-                  <p>
-                    <span>
-                      <b>Matric Grade: </b>
-                    </span>
-                    <span>{value.matricgrade}</span>
-                  </p>
-                  <p>
-                    <span>
-                      <b>Contact: </b>
-                    </span>
-                    <span>{value.contact}</span>
-                  </p>
-                  <p>
-                    <span>
-                      <b>Allow: </b>
-                    </span>
-                    <span>{value.allow}</span>
-                  </p>
+                  <Avatar
+                    alt="User Image"
+                    src={value.imageURL ? value.imageURL : User}
+                    style={{
+                      width: "160px",
+                      height: "160px",
+                      alignItems: "center",
+                    }}
+                  />
                 </Grid>
-                <Grid
-                  xs={12}
-                  md={12}
-                  sm={12}
-                  item
-                  style={{ textAlign: "center" }}
+              </Grid>
+              <Grid xs={12} md={12} sm={12} item>
+                <h4 style={{ textAlign: "center" }}>{value.uname}</h4>
+              </Grid>
+              <Grid
+                xs={12}
+                md={12}
+                sm={12}
+                item
+                style={{ marginLeft: "20px" }}
+              >
+                <p>
+                  <span>
+                    <b>Email: </b>
+                  </span>
+                  <span>{value.email}</span>
+                </p>
+                <p>
+                  <span>
+                    <b>Age: </b>
+                  </span>
+                  <span>{value.age}</span>
+                </p>
+                <p>
+                  <span>
+                    <b>Gender: </b>
+                  </span>
+                  <span>{value.gender}</span>
+                </p>
+                <p>
+                  <span>
+                    <b>Qualification: </b>
+                  </span>
+                  <span>{value.qualification}</span>
+                </p>
+                <p>
+                  <span>
+                    <b>Specialization: </b>
+                  </span>
+                  <span>{value.specialization}</span>
+                </p>
+                <p>
+                  <span>
+                    <b>CGPA: </b>
+                  </span>
+                  <span>{value.cgpa}</span>
+                </p>
+                <p>
+                  <span>
+                    <b>Skills: </b>
+                  </span>
+                  <span>{value.skills}</span>
+                </p>
+                <p>
+                  <span>
+                    <b>Inter Grade: </b>
+                  </span>
+                  <span>{value.intergrade}</span>
+                </p>
+                <p>
+                  <span>
+                    <b>Matric Grade: </b>
+                  </span>
+                  <span>{value.matricgrade}</span>
+                </p>
+                <p>
+                  <span>
+                    <b>Contact: </b>
+                  </span>
+                  <span>{value.contact}</span>
+                </p>
+                <p>
+                  <span>
+                    <b>Allow: </b>
+                  </span>
+                  <span>{value.allow}</span>
+                </p>
+              </Grid>
+              <Grid
+                xs={12}
+                md={12}
+                sm={12}
+                item
+                style={{ textAlign: "center" }}
+              >
+                <Button
+                  variant="contained"
+                  color="default"
+                  style={{
+                    marginTop: "10px",
+                    marginBottom: "15px",
+                    marginLeft: "10px",
+                    padding: "4px 50px",
+                  }}
+                  onClick={() =>
+                    update({ id: value._id, allow: value.allow })
+                  }
                 >
-                  <Button
-                    variant="contained"
-                    color="default"
-                    style={{
-                      marginTop: "10px",
-                      marginBottom: "15px",
-                      marginLeft: "10px",
-                      padding: "4px 50px",
-                    }}
-                    onClick={() =>
-                      update({ id: value._id, allow: value.allow })
-                    }
-                  >
-                    Allow
-                  </Button>
-                  <Button
-                    variant="contained"
-                    color="default"
-                    style={{
-                      marginTop: "10px",
-                      marginBottom: "15px",
-                      marginLeft: "10px",
-                      padding: "4px 50px",
-                    }}
-                    onClick={() => deletejob(value._id)}
-                  >
-                    Delete
-                  </Button>
-                </Grid>
-              </Card>
-            );
-          })}
-        </Grid>
-        <Grid xs={3} md={3} sm={3}></Grid>
+                  Allow
+                </Button>
+                <Button
+                  variant="contained"
+                  color="default"
+                  style={{
+                    marginTop: "10px",
+                    marginBottom: "15px",
+                    marginLeft: "10px",
+                    padding: "4px 50px",
+                  }}
+                  onClick={() => deletejob(value._id)}
+                >
+                  Delete
+                </Button>
+              </Grid>
+            </Card>
+          );
+        })}
+      </Grid>
+      <Grid xs={0} md={3} sm={0}></Grid>
+      </>  
+      :<h1 style={{display:"flex",justifyContent:"center",color:"grey", alignItems:"center",height:"700px"}}>No Profile Available</h1>}
+        
       </Grid>
 
       <Footer />

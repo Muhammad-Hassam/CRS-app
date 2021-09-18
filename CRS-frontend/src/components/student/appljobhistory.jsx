@@ -16,29 +16,28 @@ const ApplyjobHistory = () => {
   useEffect(() => {
     axios({
       method: "get",
-      url: url + "applyjob",
+      url: url + "/applyjob",
       withCredentials: true,
     })
       .then((res) => {
-        if (res.data.status === 200) {
           setData(res.data.data);
-        }
-        console.log(res.data.data);
       })
       .catch((err) => {
         if (err) {
+          console.log(err)
         }
       });
   }, []);
 
   const job = data.filter((post) => post.userID == userData.user._id);
-  console.log(job);
   return (
     <>
       <Header />
-      <Grid container style={{ marginTop: "25px" }}>
+      <Grid container style={{display:"flex",justifyContent:"center",alignItems:"center",height:"calc(100vh - 142px)" }}>
         <Grid xs={3} md={3} sm={3}></Grid>
         <Grid xs={12} md={6} sm={12} item>
+        {data.length>0?
+        <>
           <Grid item xs={12} md={12} sm={12} style={{ textAlign: "center" }}>
             <h1>Applied Jobs</h1>
           </Grid>
@@ -108,6 +107,9 @@ const ApplyjobHistory = () => {
               </Card>
             );
           })}
+          </>
+          :
+          <h1 style={{display:"flex",justifyContent:"center",color:"grey"}}>No Applied Jobs</h1>}
         </Grid>
         <Grid xs={0} md={3} sm={0}></Grid>
       </Grid>

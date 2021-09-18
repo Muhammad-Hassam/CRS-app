@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "../header/header";
 import Footer from "../footer/footer";
+import * as Yup from "yup";
 import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
 import TextField from "@material-ui/core/TextField";
@@ -31,6 +32,19 @@ const Createjob = () => {
       jobtype: "",
       skills: "",
     },
+    validationSchema: Yup.object({
+      uname: Yup.string()
+        .required("Required!"),
+      experience: Yup.string()
+        .required("Required!"),
+      email: Yup.string()
+        .email("Email is invalid")
+        .required("Required!"),
+      jobtype: Yup.string()
+      .required("Required!"),
+
+    }),
+
     onSubmit: (values) => {
       const {
         uname,
@@ -63,7 +77,7 @@ const Createjob = () => {
             console.log("data is not comming");
           } else {
             Swal.fire({
-              position: "top-end",
+              position: "center",
               icon: "success",
               title: "Job Created",
               showConfirmButton: false,
@@ -81,9 +95,9 @@ const Createjob = () => {
   return (
     <>
       <Header />
-      <Grid container style={{ marginTop: "25px", alignItems: "center" }}>
-        <Grid xs={3} md={3} sm={3}></Grid>
-        <Grid xs={12} md={6} sm={6} item>
+      <Grid container style={{display:"flex",justifyContent:"center",alignItems:"center",height:"calc(100vh - 142px)"}}>
+        <Grid xs={0} md={3} sm={0}></Grid>
+        <Grid xs={12} md={6} sm={12} item>
           <Card>
             <Grid item xs={12} md={12} sm={12} style={{ textAlign: "center" }}>
               <h1>Create Job Form</h1>
@@ -104,6 +118,11 @@ const Createjob = () => {
                   }}
                   variant="filled"
                 />
+                 {formik.errors.uname && formik.touched.uname && (
+                  <p style={{ color: "red", marginLeft: "5px" }}>
+                    {formik.errors.uname}
+                  </p>
+                )}
                 <TextField
                   label="Email"
                   style={{ margin: 8, marginBottom: "20px" }}
@@ -118,6 +137,11 @@ const Createjob = () => {
                   }}
                   variant="filled"
                 />
+                 {formik.errors.email && formik.touched.email && (
+                  <p style={{ color: "red", marginLeft: "5px" }}>
+                    {formik.errors.email}
+                  </p>
+                )}
                 <Grid item xs={12} md={12} sm={12}>
                   <TextField
                     label="Description"
@@ -162,6 +186,11 @@ const Createjob = () => {
                           label="Full-Time"
                         />
                       </RadioGroup>
+                      {formik.errors.jobtype && formik.touched.jobtype && (
+                  <p style={{ color: "red", marginLeft: "5px" }}>
+                    {formik.errors.jobtype}
+                  </p>
+                )}
                     </FormControl>
                   </Grid>
                 </Grid>
@@ -203,6 +232,11 @@ const Createjob = () => {
                     variant="filled"
                   />
                 </Grid>
+                {formik.errors.experience && formik.touched.experience && (
+                  <p style={{ color: "red", marginLeft: "5px" }}>
+                    {formik.errors.experience}
+                  </p>
+                )}
                 <Grid item xs={12} md={12} sm={12}>
                   <TextField
                     label="Website"
@@ -255,7 +289,7 @@ const Createjob = () => {
             </form>
           </Card>
         </Grid>
-        <Grid xs={3} md={3} sm={3}></Grid>
+        <Grid xs={0} md={3} sm={0}></Grid>
       </Grid>
 
       <Footer />

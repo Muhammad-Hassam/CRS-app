@@ -64,16 +64,21 @@ const Studprofile = () => {
   return (
     <>
       <Header />
-      <Grid container style={{ marginTop: "25px" }}>
-        <Grid xs={3} md={3} sm={3}></Grid>
-        <Grid xs={12} md={6} sm={6} item>
+      <Grid container style={{
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      height: "calc(100vh - 142px)"
+           }}>
+        <Grid xs={0} md={3} sm={0}></Grid>
+        <Grid xs={12} md={6} sm={12} item>
           <Card>
             <Grid item xs={12} md={12} sm={12} style={{ textAlign: "center" }}>
               <h1>Student Profile</h1>
             </Grid>
             <Grid container>
-              <Grid xs={4} md={4} sm={4} item></Grid>
-              <Grid xs={4} md={4} sm={4} item style={{textAlign:"center",marginLeft:"30px"}}>
+              <Grid xs={12} md={12} sm={12} item>
+                <div style={{display:"flex",justifyContent:"center"}}>
                 <form>
                   <label for="fileToUpload">
                     <div
@@ -96,8 +101,8 @@ const Studprofile = () => {
                     onChange={uploadImg}
                   />
                 </form>
+                </div>
               </Grid>
-              <Grid xs={4} md={4} sm={4} item></Grid>
             </Grid>
             <Grid
               xs={12}
@@ -202,7 +207,7 @@ const Studprofile = () => {
             </Grid>
           </Card>
         </Grid>
-        <Grid xs={3} md={3} sm={3}></Grid>
+        <Grid xs={0} md={3} sm={0}></Grid>
       </Grid>
 
       <Footer />

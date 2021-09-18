@@ -13,17 +13,20 @@ import FormLabel from "@material-ui/core/FormLabel";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
 import Swal from "sweetalert2";
 import { useHistory } from "react-router-dom";
 import { useFormik } from "formik";
 import "./style.css";
 import axios from "axios";
 import url from "../../baseurl/baseURL";
+import userStatus from "../../store/action/index";
+
 
 const Studsignup = () => {
   const userData = useSelector((state) => state.status);
   const history = useHistory();
+  const dispatch=useDispatch();
   const formik = useFormik({
     initialValues: {
       uname: userData.user.uname,
@@ -69,11 +72,12 @@ const Studsignup = () => {
         },
       })
         .then((res) => {
+          console.log(res)
           if (!res.status === 200) {
             console.log("data is not comming");
           } else {
             Swal.fire({
-              position: "top-end",
+              position: "center",
               icon: "success",
               title: "Profile Updated",
               showConfirmButton: false,
@@ -87,13 +91,13 @@ const Studsignup = () => {
         });
     },
   });
-
+ 
   return (
     <>
       <Header />
-      <Grid container style={{ marginTop: "25px", alignItems: "center" }}>
-        <Grid xs={3} md={3} sm={3}></Grid>
-        <Grid xs={12} md={6} sm={6} item>
+      <Grid container style={{ display:"flex",justifyContent:"center",alignItems:"center",height:"calc(100vh - 142px)" }}>
+        <Grid xs={0} md={3} sm={0}></Grid>
+        <Grid xs={12} md={6} sm={12} item>
           <Card>
             <Grid item xs={12} md={12} sm={12} style={{ textAlign: "center" }}>
               <h1>Profile Update</h1>
@@ -311,7 +315,7 @@ const Studsignup = () => {
             </form>
           </Card>
         </Grid>
-        <Grid xs={3} md={3} sm={3}></Grid>
+        <Grid xs={0} md={3} sm={0}></Grid>
       </Grid>
 
       <Footer />

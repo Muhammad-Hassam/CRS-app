@@ -47,7 +47,7 @@ const Compsignup = () => {
             console.log("data is not comming");
           } else {
             Swal.fire({
-              position: "top-end",
+              position: "center",
               icon: "success",
               title: "Profile Updated",
               showConfirmButton: false,
@@ -65,9 +65,9 @@ const Compsignup = () => {
   return (
     <>
       <Header />
-      <Grid container style={{ marginTop: "25px", alignItems: "center" }}>
-        <Grid xs={3} md={3} sm={3}></Grid>
-        <Grid xs={12} md={6} sm={6} item>
+      <Grid container style={{display:"flex",justifyContent:"center",alignItems:"center",height:"calc(100vh - 142px)" }}>
+        <Grid xs={0} md={3} sm={0}></Grid>
+        <Grid xs={12} md={6} sm={12} item>
           <Card>
             <Grid item xs={12} md={12} sm={12} style={{ textAlign: "center" }}>
               <h1>Profile Update</h1>
@@ -185,7 +185,8 @@ const Compsignup = () => {
             </form>
           </Card>
         </Grid>
-        <Grid xs={3} md={3} sm={3}></Grid>
+        <Grid xs={0} md={3} sm={0}></Grid>
+
       </Grid>
 
       <Footer />

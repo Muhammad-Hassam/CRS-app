@@ -44,7 +44,7 @@ const AdminCompany = () => {
           console.log("data is not comming");
         } else {
           Swal.fire({
-            position: "top-end",
+            position: "center",
             icon: "success",
             title: "Job Deleted",
             showConfirmButton: false,
@@ -73,7 +73,7 @@ const AdminCompany = () => {
             console.log("data is not comming");
           } else {
             Swal.fire({
-              position: "top-end",
+              position: "center",
               icon: "success",
               title: "Profile Updated",
               showConfirmButton: false,
@@ -99,7 +99,7 @@ const AdminCompany = () => {
             console.log("data is not comming");
           } else {
             Swal.fire({
-              position: "top-end",
+              position: "center",
               icon: "success",
               title: "Profile Updated",
               showConfirmButton: false,
@@ -117,23 +117,26 @@ const AdminCompany = () => {
   return (
     <>
       <Header />
-      <Grid container style={{ marginTop: "25px" }}>
+      <Grid container style={{display:"flex",justifyContent:"center",alignItems:"center",height:"calc(100vh - 400px)" }}>
+
+        {company.length>0?
+        
+        <>
         <Grid item xs={12} md={12} sm={12} style={{ textAlign: "center" }}>
           <h1>Company Profile</h1>
         </Grid>
-        <Grid xs={3} md={3} sm={3}></Grid>
-        <Grid xs={12} md={6} sm={6} item>
+        <Grid xs={0} md={3} sm={0}></Grid>
+        <Grid xs={12} md={6} sm={12} item>
           {company.map((value, index) => {
             return (
               <Card style={{ marginTop: "20px" }} key={index}>
                 <Grid container>
-                  <Grid xs={4} md={4} sm={4} item></Grid>
                   <Grid
-                    xs={8}
-                    md={8}
-                    sm={8}
+                    xs={12}
+                    md={12}
+                    sm={12}
                     item
-                    style={{ textAlign: "center", marginTop: "10px" }}
+                    style={{ display:"flex",justifyContent:"center"}}
                   >
                     <Avatar
                       alt="User Image"
@@ -145,7 +148,6 @@ const AdminCompany = () => {
                       }}
                     />
                   </Grid>
-                  <Grid xs={2} md={2} sm={2} item></Grid>
                 </Grid>
                 <Grid xs={12} md={12} sm={12} item>
                   <h4 style={{ textAlign: "center" }}> {value.uname}</h4>
@@ -234,7 +236,8 @@ const AdminCompany = () => {
             );
           })}
         </Grid>
-        <Grid xs={3} md={3} sm={3}></Grid>
+        <Grid xs={0} md={3} sm={0}></Grid>
+        </>:<h1 style={{display:"flex",justifyContent:"center",color:"grey", alignItems:"center",height:"700px"}}>No Profile Available</h1>}
       </Grid>
 
       <Footer />

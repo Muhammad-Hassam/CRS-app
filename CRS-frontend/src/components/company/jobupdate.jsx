@@ -65,13 +65,12 @@ const Jobupdate = (props) => {
             console.log("data is not comming");
           } else {
             Swal.fire({
-              position: "top-end",
+              position: "center",
               icon: "success",
               title: "Job Updated",
               showConfirmButton: false,
               timer: 2000,
             });
-            history.push("/companydashboard");
           }
         })
         .catch((err) => {
@@ -83,7 +82,7 @@ const Jobupdate = (props) => {
   return (
     <>
       <Header />
-      <Grid container style={{ marginTop: "25px", alignItems: "center" }}>
+      <Grid container style={{ display:"flex",justifyContent:"center",alignItems:"center",height:"calc(100vh - 142px)" }}>
         <Grid xs={3} md={3} sm={3}></Grid>
         <Grid xs={12} md={6} sm={6} item>
           <Card>

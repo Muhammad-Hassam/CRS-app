@@ -31,7 +31,7 @@ const Admindashboard = () => {
   return (
     <>
       <Header />
-      <Grid container style={{ marginTop: '25px' }}>
+      <Grid container style={{ display:"flex",justifyContent:"center",alignItems:"center",height:"calc(100vh - 142px)" }}>
         <Grid
           item
           xs={12}
@@ -41,8 +41,8 @@ const Admindashboard = () => {
         >
           <h1>Admin DashBoard</h1>
         </Grid>
-        <Grid item xs={3} md={4}></Grid>
-        <Grid item xs={6} md={4}>
+        <Grid item xs={0} md={4} sm={0}></Grid>
+        <Grid item xs={12} md={4} sm={12}>
           <Card>
             <CardActionArea>
               <CardMedia
@@ -78,9 +78,9 @@ const Admindashboard = () => {
             </CardActions>
           </Card>
         </Grid>
-        <Grid item xs={3} md={4}></Grid>
-        <Grid item xs={3} md={4}></Grid>
-        <Grid item xs={6} md={4} style={{ marginTop: '45px' }}>
+        <Grid item xs={0} md={4} sm={0}></Grid>
+        <Grid item xs={0} md={4} sm={0}></Grid>
+        <Grid item xs={12} md={4} sm={12} style={{ marginTop: '45px' }}>
           <Card>
             <CardActionArea>
               <CardMedia
@@ -116,9 +116,9 @@ const Admindashboard = () => {
             </CardActions>
           </Card>
         </Grid>
-        <Grid item xs={3} md={4}></Grid>
-        <Grid item xs={3} md={4}></Grid>
-        <Grid item xs={6} md={4} style={{ marginTop: '45px' }}>
+        <Grid item xs={0} md={4} sm={0}></Grid>
+        <Grid item xs={0} md={4} sm={0}></Grid>
+        <Grid item xs={12} md={4} sm={12} style={{ marginTop: '45px' }}>
           <Card>
             <CardActionArea>
               <CardMedia
@@ -154,9 +154,9 @@ const Admindashboard = () => {
             </CardActions>
           </Card>
         </Grid>
-        <Grid item xs={3} md={4}></Grid>
+        <Grid item xs={0} md={4} sm={0}></Grid>
       </Grid>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

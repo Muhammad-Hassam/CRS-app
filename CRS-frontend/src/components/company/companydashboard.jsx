@@ -31,7 +31,7 @@ const Companydashboard = () => {
   return (
     <>
       <Header />
-      <Grid container style={{ marginTop: "25px" }}>
+      <Grid container style={{ display:"flex",justifyContent:"center",alignItems:"center",height:"calc(100vh - 142px)" }}>
         <Grid
           item
           xs={12}

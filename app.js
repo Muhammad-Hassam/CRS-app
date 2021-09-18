@@ -10,6 +10,8 @@ const jwt = require("jsonwebtoken");
 const Users = require("./dbmodels/user");
 const fileupload = require("express-fileupload");
 const path = require("path");
+const http = require('http').createServer(app)
+const io = require('socket.io')(http, { cors: { origin: "*" } })
 
 dotenv.config({ path: "./config.env" });
 const port = process.env.PORT || 4000;
@@ -18,6 +20,10 @@ app.use(
   "/",
   express.static(path.resolve(path.join(__dirname, "./CRS-frontend/build")))
 );
+
+io.on('connection', (socket) => {
+
+})
 app.use(express.json());
 app.use(cookie());
 app.use(
@@ -72,7 +78,7 @@ app.get("/profile", (req, res) => {
   console.log("profile", req.body.jwtoken);
   Users.findById(
     req.body.jwtoken.id,
-    "uname email age skills gender imageURL intergrade cgpa matricgrade status services website contact role allow",
+    "uname email age skills gender imageURL intergrade cgpa matricgrade status services website contact role allow qualification specialization",
     function (err, doc) {
       console.log(doc);
       if (!err) {
@@ -94,6 +100,6 @@ app.post("/logout", (req, res) => {
   res.send("JWT Clear");
 });
 
-app.listen(port, () => {
+http.listen(port, () => {
   console.log("server is running");
 });

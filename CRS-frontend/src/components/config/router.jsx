@@ -39,7 +39,7 @@ const Routers = () => {
       withCredentials: true,
     })
       .then((res) => {
-        if (res.data.status === 200) {
+        // if (res.data.status === 200) {
           dispatch(
             userStatus({
               loginStatus: true,
@@ -47,7 +47,7 @@ const Routers = () => {
               user: res.data.profile,
             })
           );
-        }
+        // }
       })
       .catch((err) => {
         dispatch(userStatus({ loginStatus: false }));

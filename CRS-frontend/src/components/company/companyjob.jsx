@@ -30,7 +30,7 @@ const CompanyJob = () => {
           console.log("data is not comming");
         } else {
           Swal.fire({
-            position: "top-end",
+            position: "center",
             icon: "success",
             title: "Job Deleted",
             showConfirmButton: false,
@@ -65,129 +65,134 @@ const CompanyJob = () => {
   return (
     <>
       <Header />
-      <Grid container style={{ marginTop: "25px" }}>
-        <Grid xs={3} md={3} sm={3}></Grid>
+      <Grid container style={{ display:"flex",justifyContent:"center",alignItems:"center",height:"calc(100vh - 142px)" }}>
+        <Grid xs={0} md={3} sm={0}></Grid>
         <Grid xs={12} md={6} sm={12} item>
-          <Grid item xs={12} md={12} sm={12} style={{ textAlign: "center" }}>
-            <h1>Company Jobs</h1>
-          </Grid>
-          {jobs.map((value, index) => {
-            return (
-              <Card key={index} style={{ marginTop: "20px" }}>
-                <Grid xs={12} md={12} sm={12} item>
-                  <h4 style={{ textAlign: "center" }}> {value.uname}</h4>
-                </Grid>
-                <Grid
-                  xs={12}
-                  md={12}
-                  sm={12}
-                  item
-                  style={{ marginLeft: "20px" }}
-                >
-                  <p>
-                    <span>
-                      <b>Email: </b>
-                    </span>
-                    <span>{value.email}</span>
-                  </p>
-                  <p>
-                    <span>
-                      <b>Job Type: </b>
-                    </span>
-                    <span>{value.jobtype}</span>
-                  </p>
-                  <p style={{ marginRight: "5px" }}>
-                    <span>
-                      <b>Job Description: </b>
-                    </span>
-                    <span>{value.description}</span>
-                  </p>
-                  <p>
-                    <span>
-                      <b>Skills Required: </b>
-                    </span>
-                    <span>{value.skills}</span>
-                  </p>
-                  <p>
-                    <span>
-                      <b>Experience Required: </b>
-                    </span>
-                    <span>{value.experience}</span>
-                  </p>
-                  <p>
-                    <span>
-                      <b>Website </b>
-                    </span>
-                    <span>{value.website}</span>
-                  </p>
-                  <p>
-                    <span>
-                      <b>Contact No: </b>
-                    </span>
-                    <span>{value.contact}</span>
-                  </p>
-                </Grid>
-                <Grid
-                  xs={12}
-                  md={12}
-                  sm={12}
-                  item
-                  style={{ textAlign: "center" }}
-                >
-                  <Button
-                    variant="contained"
-                    color="default"
-                    style={{
-                      marginTop: "10px",
-                      marginBottom: "15px",
-                      marginLeft: "10px",
-                      color: "#000",
-                    }}
-                  >
-                    {console.log(value._id)}
-                    <Link
-                      to={{
-                        pathname: `/jobapplicants/${value._id}`,
-                        state: value,
-                      }}
-                      style={{ color: "#000", textDecoration: "none" }}
-                    >
-                      Appplicants
-                    </Link>
-                  </Button>
-                  <Button
-                    variant="contained"
-                    color="default"
-                    style={{
-                      marginTop: "10px",
-                      marginBottom: "15px",
-                      marginLeft: "10px",
-                      color: "#000",
-                    }}
-                  >
-                    <Link
-                      to={{ pathname: `/jobupdate/${value._id}`, state: value }}
-                      style={{ color: "#000", textDecoration: "none" }}
-                    >
-                      update
-                    </Link>
-                  </Button>
-                  <Button
-                    variant="contained"
-                    color="default"
-                    style={{
-                      marginTop: "10px",
-                      marginBottom: "15px",
-                      marginLeft: "10px",
-                    }}
-                    onClick={() => deletejob(value._id)}
-                  >
-                    Delete
-                  </Button>
-                </Grid>
-              </Card>
-            );
-          })}
+          {jobs.length>0 ? <>
+                    <Grid item xs={12} md={12} sm={12} style={{ textAlign: "center" }}>
+                      <h1>Company Jobs</h1>
+                    </Grid>
+                    {jobs.map((value, index) => {
+                      return (
+                        <Card key={index} style={{ marginTop: "20px" }}>
+                          <Grid xs={12} md={12} sm={12} item>
+                            <h4 style={{ textAlign: "center" }}> {value.uname}</h4>
+                          </Grid>
+                          <Grid
+                            xs={12}
+                            md={12}
+                            sm={12}
+                            item
+                            style={{ marginLeft: "20px" }}
+                          >
+                            <p>
+                              <span>
+                                <b>Email: </b>
+                              </span>
+                              <span>{value.email}</span>
+                            </p>
+                            <p>
+                              <span>
+                                <b>Job Type: </b>
+                              </span>
+                              <span>{value.jobtype}</span>
+                            </p>
+                            <p style={{ marginRight: "5px" }}>
+                              <span>
+                                <b>Job Description: </b>
+                              </span>
+                              <span>{value.description}</span>
+                            </p>
+                            <p>
+                              <span>
+                                <b>Skills Required: </b>
+                              </span>
+                              <span>{value.skills}</span>
+                            </p>
+                            <p>
+                              <span>
+                                <b>Experience Required: </b>
+                              </span>
+                              <span>{value.experience}</span>
+                            </p>
+                            <p>
+                              <span>
+                                <b>Website </b>
+                              </span>
+                              <span>{value.website}</span>
+                            </p>
+                            <p>
+                              <span>
+                                <b>Contact No: </b>
+                              </span>
+                              <span>{value.contact}</span>
+                            </p>
+                          </Grid>
+                          <Grid
+                            xs={12}
+                            md={12}
+                            sm={12}
+                            item
+                            style={{ textAlign: "center" }}
+                          >
+                            <Button
+                              variant="contained"
+                              color="default"
+                              style={{
+                                marginTop: "10px",
+                                marginBottom: "15px",
+                                marginLeft: "10px",
+                                color: "#000",
+                              }}
+                            >
+                              {console.log(value._id)}
+                              <Link
+                                to={{
+                                  pathname: `/jobapplicants/${value._id}`,
+                                  state: value,
+                                }}
+                                style={{ color: "#000", textDecoration: "none" }}
+                              >
+                                Appplicants
+                              </Link>
+                            </Button>
+                            <Button
+                              variant="contained"
+                              color="default"
+                              style={{
+                                marginTop: "10px",
+                                marginBottom: "15px",
+                                marginLeft: "10px",
+                                color: "#000",
+                              }}
+                            >
+                              <Link
+                                to={{ pathname: `/jobupdate/${value._id}`, state: value }}
+                                style={{ color: "#000", textDecoration: "none" }}
+                              >
+                                update
+                              </Link>
+                            </Button>
+                            <Button
+                              variant="contained"
+                              color="default"
+                              style={{
+                                marginTop: "10px",
+                                marginBottom: "15px",
+                                marginLeft: "10px",
+                              }}
+                              onClick={() => deletejob(value._id)}
+                            >
+                              Delete
+                            </Button>
+                          </Grid>
+                        </Card>
+                      );
+                    })}
+                    </>
+          :
+          <h1 style={{display:"flex",justifyContent:"center",color:"grey"}}>No Jobs Available</h1>}
+
         </Grid>
         <Grid xs={0} md={3} sm={0}></Grid>
       </Grid>

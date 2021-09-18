@@ -30,10 +30,6 @@ function Applyjobs(props) {
     }
   }, []);
 
-  useEffect(() => {
-    console.log("hello worlds");
-  });
-
   const saveFile = (event) => {
     let images = event.target.files[0];
     console.log(images);

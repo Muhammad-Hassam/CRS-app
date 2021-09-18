@@ -125,10 +125,14 @@ const SignUp = () => {
       <form onSubmit={formik.handleSubmit}>
         <Grid
           container
-          style={{ marginTop: "25px", height: "464px", alignItems: "center" }}
+          style={{  
+            display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          height: "calc(100vh - 142px)"}}
         >
-          <Grid xs={3} md={3} sm={3}></Grid>
-          <Grid xs={6} md={6} sm={6} item>
+          <Grid xs={0} md={4} sm={0}></Grid>
+          <Grid xs={12} md={4} sm={12} item>
             <Card>
               <Grid
                 item
@@ -223,7 +227,7 @@ const SignUp = () => {
               </Grid>
             </Card>
           </Grid>
-          <Grid xs={3} md={3} sm={3}></Grid>
+          <Grid xs={0} md={4} sm={0}></Grid>
         </Grid>
       </form>
       <Footer />

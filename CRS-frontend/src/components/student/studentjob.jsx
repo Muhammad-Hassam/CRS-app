@@ -33,14 +33,19 @@ const Studentjob = () => {
         }
       });
   }, []);
-
   return (
     <>
       <Header />
 
-      <Grid container style={{ marginTop: "25px" }}>
+      <Grid container style={{  display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            height: "calc(100vh - 142px)"}}>
         <Grid xs={3} md={3} sm={3}></Grid>
         <Grid xs={12} md={6} sm={12} item>
+
+        {data.length>0?
+        <>
           <Grid item xs={12} md={12} sm={12} style={{ textAlign: "center" }}>
             <h1>Jobs</h1>
           </Grid>
@@ -129,7 +134,9 @@ const Studentjob = () => {
                 </Grid>
               </Card>
             );
+            
           })}
+          </>:<h1 style={{display:"flex",justifyContent:"center",color:"grey"}}>No Jobs Available</h1>}
         </Grid>
         <Grid xs={0} md={3} sm={0}></Grid>
       </Grid>
