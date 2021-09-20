@@ -28,7 +28,11 @@ const Header = () => {
         );
       })
       .catch((err) => {
-        console.log(err);
+        dispatch(
+          userStatus({
+            loginStatus: false,
+          })
+        );
       });
   };
   return (
