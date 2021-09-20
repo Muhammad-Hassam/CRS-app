@@ -35,7 +35,7 @@ const Companyprofile = () => {
         data.imageURL = url;
       })
       .catch((err) => {
-        console.log(err);
+        alert(err);
       });
   };
 
@@ -54,10 +54,10 @@ const Companyprofile = () => {
           console.log(res);
         })
         .catch((err) => {
-          console.log(err);
+          alert(err);
         });
     } else {
-      console.log("kindly select an image");
+      alert("kindly select an image");
     }
   };
 

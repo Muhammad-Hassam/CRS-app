@@ -12,7 +12,6 @@ import url from "../../baseurl/baseURL";
 
 const Jobapplicants = (props) => {
   const data = props.location.state;
-  console.log("data", data);
   const [user, setUser] = useState([]);
   useEffect(() => {
     axios({
@@ -24,16 +23,13 @@ const Jobapplicants = (props) => {
         if (res.data.status === 200) {
           setUser(res.data.data);
         }
-        console.log(res);
       })
       .catch((err) => {
         if (err) {
         }
       });
   }, []);
-  console.log(user);
   const applicant = user.filter((post) => post.jobID._id === data._id);
-  console.log(applicant);
 
   return (
     <>

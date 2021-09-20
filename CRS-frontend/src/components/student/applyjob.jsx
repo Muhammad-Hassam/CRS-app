@@ -25,14 +25,11 @@ function Applyjobs(props) {
   useEffect(() => {
     if (data === null || data === "undefined" || data === "") {
       history.push("/studentjob");
-    } else {
-      console.log(data);
     }
   }, []);
 
   const saveFile = (event) => {
     let images = event.target.files[0];
-    console.log(images);
     let pics = images;
     const picsname = Date.now();
     Storage.ref("file/" + images.name + picsname)
@@ -49,7 +46,7 @@ function Applyjobs(props) {
         });
       })
       .catch((err) => {
-        console.log(err);
+        alert(err);
       });
   };
 
@@ -81,7 +78,7 @@ function Applyjobs(props) {
       })
       .catch((err) => {
         if (err) {
-          console.log(err);
+          alert(err);
         }
       });
   };

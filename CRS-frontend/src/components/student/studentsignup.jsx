@@ -72,7 +72,6 @@ const Studsignup = () => {
         },
       })
         .then((res) => {
-          console.log(res)
           if (!res.status === 200) {
             console.log("data is not comming");
           } else {
@@ -87,7 +86,7 @@ const Studsignup = () => {
           }
         })
         .catch((err) => {
-          console.log(err);
+          alert(err);
         });
     },
   });

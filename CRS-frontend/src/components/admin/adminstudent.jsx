@@ -52,7 +52,7 @@ const AdminStudent = () => {
         }
       })
       .catch((err) => {
-        console.log(err);
+        alert(err);
       });
   };
 
@@ -81,7 +81,7 @@ const AdminStudent = () => {
           }
         })
         .catch((err) => {
-          console.log(err);
+          alert(err);
         });
     } else {
       axios({
@@ -107,7 +107,7 @@ const AdminStudent = () => {
           }
         })
         .catch((err) => {
-          console.log(err);
+          alert(err);
         });
     }
   };

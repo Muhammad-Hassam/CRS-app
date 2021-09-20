@@ -57,7 +57,7 @@ const Compsignup = () => {
           }
         })
         .catch((err) => {
-          console.log(err);
+          alert(err);
         });
     },
   });

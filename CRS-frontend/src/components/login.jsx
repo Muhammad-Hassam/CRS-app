@@ -56,13 +56,11 @@ const Login = () => {
           } else {
             setIsloading(false)
             alert("Invalid Credential")
-            console.log(res.data.message);
           }
         })
         .catch((err) => {
           alert("Invalid Credential")
           setIsloading(false)
-          console.log(err);
         });
     },
   });

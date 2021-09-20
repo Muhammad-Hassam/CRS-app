@@ -60,7 +60,6 @@ const SignUp = () => {
           },
         })
           .then((res) => {
-            console.log(res.data.error==="Email exist")
             if (res.data.error==="Email exist") {
               Swal.fire({
                 icon: "error",
@@ -78,7 +77,7 @@ const SignUp = () => {
             }
           })
           .catch((err) => {
-            console.log(err);
+            alert(err)
           });
       } else {
         axios({
@@ -113,7 +112,7 @@ const SignUp = () => {
             }
           })
           .catch((err) => {
-            console.log(err);
+            alert(err);
           });
       }
     },

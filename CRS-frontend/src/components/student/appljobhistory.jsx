@@ -11,7 +11,6 @@ import url from "../../baseurl/baseURL";
 const ApplyjobHistory = () => {
   const [data, setData] = useState([]);
   const userData = useSelector((state) => state.status);
-  console.log(userData.user);
 
   useEffect(() => {
     axios({
@@ -24,7 +23,7 @@ const ApplyjobHistory = () => {
       })
       .catch((err) => {
         if (err) {
-          console.log(err)
+          alert(err)
         }
       });
   }, []);

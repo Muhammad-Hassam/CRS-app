@@ -53,7 +53,7 @@ const AdminCompany = () => {
         }
       })
       .catch((err) => {
-        console.log(err);
+        alert(err);
       });
   };
 
@@ -82,7 +82,7 @@ const AdminCompany = () => {
           }
         })
         .catch((err) => {
-          console.log(err);
+          alert(err);
         });
     } else {
       axios({
@@ -108,7 +108,7 @@ const AdminCompany = () => {
           }
         })
         .catch((err) => {
-          console.log(err);
+          alert(err);
         });
     }
   };
